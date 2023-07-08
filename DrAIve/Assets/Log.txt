@@ -1,0 +1,11 @@
+Momenteel bezig met de Navigation finding 
+
+Ge hebt verschillende nodes, waarschijnlijk gaat het bezig zijn om eerst een hele map te maken van de mogelijke routes dat ge op kunt gaan 
+en die map bevat dan referenties naar de road gameobjects (dus ook de transforms)
+Dan kunt ge achteraf daar sneller door loopen
+
+Als ge daar later doorloopt mss is het dan ook beter om te kijken of ge niet terug aan het keren zijt A.K.A. of ge een road niet al eens gehad hebt
+Dan zal het wrs niet nodig zijn. Buiten als het niet anders gaat, bv carrefour Herent, daar moet ge ook eerst rond het rondpunt gaan eer ge erop
+kunt.
+
+Mogelijks A* gebruiken voor pathfinding
