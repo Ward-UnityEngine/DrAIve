@@ -93,8 +93,8 @@ public class NavSolver: MonoBehaviour
                     //else, it is a one way which we aren't allowed to enter
                 }
                 else
-                { 
-                    Debug.Log("Didn't find a further path for road: " + road.name + " and node: " + navNodeTR.name); 
+                {
+                    //Debug.Log("Didn't find a further path for road: " + road.name + " and node: " + navNodeTR.name);
                 }
 
 
@@ -134,6 +134,8 @@ public class NavSolver: MonoBehaviour
 
     public NavSolution solveNav(GameObject startRoad, GameObject endRoad)
     {
+        int ROAD_USE_LIMIT = 2; //A car can only visit the same road piece twice
+
         List<NavSolution> solutions = new List<NavSolution>();
         NavSolution startSolution = new NavSolution();
         startSolution.roads.Add(startRoad);
@@ -141,14 +143,12 @@ public class NavSolver: MonoBehaviour
         solutions.Add(startSolution);
 
         //strategy, go from one node recursive. But solve always all things one step more untill the shortest solution has been found
-        bool solutionNotFound = true;
-        int solutionIndex = 0;
         int iterations = 0;
 
-        while (solutionNotFound)
+        while (true)
         {
             iterations++;
-            if (iterations > 200)
+            if (iterations > 100000)
             {
                 Debug.Log("Reached max iterations");
                 return null;
@@ -159,18 +159,10 @@ public class NavSolver: MonoBehaviour
                 Debug.LogWarning("Couldn't find a solution to reach: " + endRoad.name + " from: " + startRoad.name);
                 return null;
             }
-            if (solutionIndex >= solutions.Count || solutionIndex < 0)
-            {
-                //looped through them all one more time -> start it again and sort it with the smallest in front
-                solutions = solutions.OrderBy(x => x.pathLength).ToList();
-                solutionIndex = 0; 
-            }
 
-            Debug.Log(solutionIndex);
-            NavSolution possibleSolution = solutions[solutionIndex];
+            NavSolution possibleSolution = solutions[0];
             //remove that solution from the list, if we can move on from there we will find the way, if we can't no point in bothering
-            solutions.RemoveAt(solutionIndex);
-            solutionIndex--;
+            solutions.RemoveAt(0);
             GameObject lastRoad = possibleSolution.roads[possibleSolution.roads.Count - 1];
             //for each node check what the possible next steps are
             RoadNode targetNode;
@@ -184,24 +176,26 @@ public class NavSolver: MonoBehaviour
                 {
                     if (road != null)
                     {
-
                         //create new solution option
                         RoadNode nodeForLength;
                         navigationMap.TryGetValue(road.name, out nodeForLength);
                         if (nodeForLength != null)
                         {
-                            List<GameObject> roadsClone = new List<GameObject>(possibleSolution.roads);
-                            roadsClone.Add(road);
-                            NavSolution newSolution = new NavSolution();
-                            newSolution.roads = roadsClone;
-                            newSolution.pathLength += nodeForLength.roadLength;
-                            solutions.Add(newSolution);
-                            solutionIndex++;
-                            if (road.name == lastRoad.name)
-                            {
-                                //found the solution !
-                                return newSolution;
-                        }
+                            //first check if node wasn't more then limit in the solution. Don't want to keep going back and forwards
+                            int currentOcurrances = possibleSolution.roads.Count(x => x == road);
+                            if (currentOcurrances < ROAD_USE_LIMIT) {
+                                List<GameObject> roadsClone = new List<GameObject>(possibleSolution.roads);
+                                roadsClone.Add(road);
+                                NavSolution newSolution = new NavSolution();
+                                newSolution.roads = roadsClone;
+                                newSolution.pathLength = possibleSolution.pathLength + nodeForLength.roadLength;
+                                solutions.Add(newSolution);
+                                if (road.name == lastRoad.name)
+                                {
+                                    //found the solution !
+                                    return newSolution;
+                                }
+                            }                            
                         }
                         else
                         {
@@ -217,9 +211,10 @@ public class NavSolver: MonoBehaviour
                 //something went wrong
                 Debug.LogWarning("Didn't find requested node in the navigationMap, name was:" + lastRoad.name);
             }
+            //sort it with the smallest in front
+            solutions = solutions.OrderBy(x => x.pathLength).ToList();
 
 
         }
-        return null;
     }
 }

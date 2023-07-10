@@ -56,6 +56,28 @@ public class NavTesting : MonoBehaviour
         }
     }
 
+    private void spawnAndFindIndex(int randomIndex, int newIndex)
+    {
+        GameObject startRoad = spawnPositions[randomIndex];
+        GameObject endRoad = spawnPositions[newIndex];
+        s1 = Instantiate(GreenSphere, startRoad.transform.position, startRoad.transform.rotation);
+        s2 = Instantiate(BlueSphere, endRoad.transform.position, startRoad.transform.rotation);
+        roads = new();
+        NavSolver navSolver = GameObject.Find("Navigator").GetComponent<NavSolver>();
+        if (navSolver != null)
+        {
+            NavSolution navSolution = navSolver.solveNav(startRoad, endRoad);
+            foreach (GameObject roadPiece in navSolution.roads)
+            {
+                roads.Add(Instantiate(PurpleSphere, roadPiece.transform.position, roadPiece.transform.rotation));
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Can't solve navigation meshes when there is no Navigator");
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -68,6 +90,16 @@ public class NavTesting : MonoBehaviour
                 Destroy(roadPiece);
             }
             spawnAndFind();
+        }
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            Destroy(s1);
+            Destroy(s2);
+            foreach (GameObject roadPiece in roads)
+            {
+                Destroy(roadPiece);
+            }
+            spawnAndFindIndex(30,35);
         }
     }
 }
