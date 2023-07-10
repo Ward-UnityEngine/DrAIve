@@ -65,9 +65,10 @@ GameObject:
   - component: {fileID: 1626567971088302992}
   - component: {fileID: 9047070012751104784}
   - component: {fileID: 6425511725145901171}
+  - component: {fileID: 2188904212082962294}
   m_Layer: 0
   m_Name: Road Straight 2
-  m_TagString: Untagged
+  m_TagString: Road
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -161,6 +162,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 23337dac036abd34499f9f5131a19858, type: 3}
+--- !u!114 &2188904212082962294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1897336584949535696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a4381007f0bb6244a7e86caf63f48bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  length: 2
 --- !u!1 &3265338345381989476
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,6 +270,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5998737024133256145}
+  - component: {fileID: 4917670256035139860}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Nav
@@ -278,6 +293,19 @@ Transform:
   m_Father: {fileID: 5217536829897112768}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4917670256035139860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5696050854961631803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8d6a24f18a9ac444baae1b28bb83914, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: 0
 --- !u!1 &6652433670650314006
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,6 +315,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5421007773518620596}
+  - component: {fileID: 3175645460036035837}
   m_Layer: 0
   m_Name: GameObject (1)
   m_TagString: Nav
@@ -309,6 +338,19 @@ Transform:
   m_Father: {fileID: 5217536829897112768}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3175645460036035837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6652433670650314006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8d6a24f18a9ac444baae1b28bb83914, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: 0
 --- !u!1 &7771115640831562955
 GameObject:
   m_ObjectHideFlags: 0

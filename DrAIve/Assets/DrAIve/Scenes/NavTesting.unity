@@ -4315,6 +4315,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7936016694560216007, guid: bfbca429fc0c3f74db546a58d8766e74, type: 3}
   m_PrefabInstance: {fileID: 736506274}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &741392136
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 741392137}
+  - component: {fileID: 741392138}
+  m_Layer: 0
+  m_Name: Navigator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &741392137
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741392136}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &741392138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 741392136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fef2aa6dc7b6e341ad8d44c2cc70a35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &749372536
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8750,7 +8794,7 @@ GameObject:
   - component: {fileID: 1480796965}
   - component: {fileID: 1480796964}
   m_Layer: 0
-  m_Name: Navigator
+  m_Name: NavigatorTester
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8771,6 +8815,7 @@ MonoBehaviour:
   roadParent: {fileID: 341658586}
   GreenSphere: {fileID: 3520898591614395759, guid: 3a62c410eb27539459fdef7262968b13, type: 3}
   BlueSphere: {fileID: 277754669660993123, guid: 9b658a9efa6659546b8ac533954b4c4c, type: 3}
+  PurpleSphere: {fileID: 9160876509802798239, guid: 101dc458c7a83bd46b6e705c421ce8b0, type: 3}
 --- !u!4 &1480796965
 Transform:
   m_ObjectHideFlags: 0

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-struct NextNode
+public class NextNode
 {
     public GameObject nextRoad;
     public GameObject nextNavNode;
@@ -19,7 +19,7 @@ public class NavPathNode
         this.currentNavNode = currentNavNode;
     }
 
-    public List<NextNode>[] solveNode()
+    public List<NextNode> solveNode()
     {
         List<NextNode> result = new List<NextNode>();
         foreach (GameObject navNode in currentRoad.transform.Find("Nav"))
@@ -32,6 +32,8 @@ public class NavPathNode
 
             }
         }
+
+        return result;
 
 
     }

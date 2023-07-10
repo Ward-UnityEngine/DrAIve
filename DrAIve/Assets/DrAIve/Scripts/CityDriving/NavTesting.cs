@@ -9,6 +9,11 @@ public class NavTesting : MonoBehaviour
     private GameObject[] spawnPositions;
     public GameObject GreenSphere;
     public GameObject BlueSphere;
+    public GameObject PurpleSphere;
+
+    private GameObject s1;
+    private GameObject s2;
+    private List<GameObject> roads = new List<GameObject>();
     void Start()
     {
         //set spawn positions from parent and raytargets
@@ -33,8 +38,22 @@ public class NavTesting : MonoBehaviour
             newIndex = Random.Range(0, spawnPositions.Length - 1);
         }
         GameObject endRoad = spawnPositions[newIndex];
-        NavSolver navSolver = new NavSolver(startRoad, endRoad);
-        navSolver.solveNav();
+        s1 = Instantiate(GreenSphere, startRoad.transform.position, startRoad.transform.rotation);
+        s2 = Instantiate(BlueSphere, endRoad.transform.position,startRoad.transform.rotation);
+        roads = new();
+        NavSolver navSolver = GameObject.Find("Navigator").GetComponent<NavSolver>();
+        if (navSolver != null)
+        {
+            NavSolution navSolution = navSolver.solveNav(startRoad, endRoad);
+            foreach (GameObject roadPiece in navSolution.roads)
+            {
+                roads.Add(Instantiate(PurpleSphere, roadPiece.transform.position, roadPiece.transform.rotation));
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Can't solve navigation meshes when there is no Navigator");
+        }
     }
 
     // Update is called once per frame
@@ -42,6 +61,12 @@ public class NavTesting : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            Destroy(s1);
+            Destroy(s2);
+            foreach (GameObject roadPiece in roads)
+            {
+                Destroy(roadPiece);
+            }
             spawnAndFind();
         }
     }
