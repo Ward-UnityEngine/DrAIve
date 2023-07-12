@@ -38,22 +38,7 @@ public class NavTesting : MonoBehaviour
             newIndex = Random.Range(0, spawnPositions.Length - 1);
         }
         GameObject endRoad = spawnPositions[newIndex];
-        s1 = Instantiate(GreenSphere, startRoad.transform.position, startRoad.transform.rotation);
-        s2 = Instantiate(BlueSphere, endRoad.transform.position,startRoad.transform.rotation);
-        roads = new();
-        NavSolver navSolver = GameObject.Find("Navigator").GetComponent<NavSolver>();
-        if (navSolver != null)
-        {
-            NavSolution navSolution = navSolver.solveNav(startRoad, endRoad);
-            foreach (GameObject roadPiece in navSolution.roads)
-            {
-                roads.Add(Instantiate(PurpleSphere, roadPiece.transform.position, roadPiece.transform.rotation));
-            }
-        }
-        else
-        {
-            Debug.LogWarning("Can't solve navigation meshes when there is no Navigator");
-        }
+        spawnAndFindIndex(randomIndex, newIndex);
     }
 
     private void spawnAndFindIndex(int randomIndex, int newIndex)
@@ -66,9 +51,16 @@ public class NavTesting : MonoBehaviour
         NavSolver navSolver = GameObject.Find("Navigator").GetComponent<NavSolver>();
         if (navSolver != null)
         {
-            NavSolution navSolution = navSolver.solveNav(startRoad, endRoad);
-            foreach (GameObject roadPiece in navSolution.roads)
+            List<RoadNode> solution = navSolver.SolveViaAStar(startRoad, endRoad);
+            if (solution == null || solution.Count <= 0)
             {
+                Debug.Log("Solution was null or empty");
+                return;
+            }
+
+            foreach (RoadNode roadNode in solution)
+            {
+                GameObject roadPiece = roadNode.road;
                 roads.Add(Instantiate(PurpleSphere, roadPiece.transform.position, roadPiece.transform.rotation));
             }
         }

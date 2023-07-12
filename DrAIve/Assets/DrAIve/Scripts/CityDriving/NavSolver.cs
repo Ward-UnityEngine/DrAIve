@@ -2,11 +2,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
+
+
+//A* path node
 public class RoadNode
 {
+    public int gCost = 0;
+    public int hCost = 0;  
+    public int fCost = 0;
+
     //if it has a road above, it has to be accessible. So if one way road goes to two way road. The one way road will have 
     // the two way road as roadBelow but the two way road won't have to one way road as road Below.
     public GameObject road;
@@ -14,20 +21,26 @@ public class RoadNode
     public GameObject roadBelow;
     public GameObject roadLeft;
     public GameObject roadRight;
-    public int roadLength;
+    public int roadLength = 0;
+
+    public RoadNode cameFromNode; //to be used when going back from the eventual solution
+
+    public RoadNode(GameObject road)
+    {
+        this.road = road;
+    }
+
+    public int CaculateFCost()
+    {
+        fCost = gCost + hCost;
+        return fCost;
+    }
 }
 
 public class NodeMatch
 {
     public GameObject road;
     public GameObject matchedNode;
-}
-
-public class NavSolution
-{
-    //class that contains the length of the solution and a list of all the roads
-    public int pathLength = 0;
-    public List<GameObject> roads = new();
 }
 
 public class NavSolver: MonoBehaviour
@@ -43,8 +56,7 @@ public class NavSolver: MonoBehaviour
         //go through all roads and nodes of the roads and find the closest one to each node of the road piece
         foreach (GameObject road in roads)
         {
-            RoadNode roadNode = new RoadNode();
-            roadNode.road = road;
+            RoadNode roadNode = new RoadNode(road);
             roadNode.roadLength = road.GetComponent<RoadLength>().length;
 
             Transform navParentNodeTR = road.transform.Find("Nav");
@@ -130,9 +142,139 @@ public class NavSolver: MonoBehaviour
         return null;
     }
 
+    public List<RoadNode> SolveViaAStar(GameObject startRoad, GameObject endRoad)
+    {
+        RoadNode startRoadNode;
+        navigationMap.TryGetValue(startRoad.name, out startRoadNode);
+        RoadNode endRoadNode;
+        navigationMap.TryGetValue(endRoad.name, out endRoadNode);
+
+
+        if (startRoadNode == null || endRoadNode == null)
+        {
+            //invalid path
+            return null;
+        }
+
+        List<RoadNode> openNodes = new();
+        openNodes.Add(startRoadNode);
+        List<RoadNode> closedNodes = new();
+
+        //initialize nodes
+        foreach (KeyValuePair<string, RoadNode> kvp in navigationMap)
+        {
+            kvp.Value.gCost = int.MaxValue;
+            kvp.Value.hCost = 0;
+            kvp.Value.CaculateFCost();
+            kvp.Value.cameFromNode = null;
+        }
+
+        //start with the start node
+        startRoadNode.gCost = 0;
+        startRoadNode.hCost = CalculateDistanceCost(startRoadNode, endRoadNode);
+        startRoadNode.CaculateFCost();
+
+        while (openNodes.Count > 0)
+        {
+            //keep looping and find that solution
+            RoadNode currentNode = GetLowestFCostNode(openNodes);
+            if (currentNode == endRoadNode)
+            {
+                //reached final node
+                return CalculatePath(endRoadNode);
+            }
+
+            openNodes.Remove(currentNode);
+            closedNodes.Add(currentNode);
+
+            foreach (RoadNode neighbourNode in GetNeighbourList(currentNode))
+            {
+                if (!closedNodes.Contains(neighbourNode))
+                {
+                    //still need to be calculated
+                    int tentativeGCost = currentNode.gCost + CalculateDistanceCost(currentNode, neighbourNode);
+                    if (tentativeGCost < neighbourNode.gCost)
+                    {
+                        neighbourNode.cameFromNode = currentNode;
+                        neighbourNode.gCost = tentativeGCost;
+                        neighbourNode.hCost = CalculateDistanceCost(neighbourNode, endRoadNode);
+                        neighbourNode.CaculateFCost();
+
+                        if (!openNodes.Contains(neighbourNode))
+                        {
+                            openNodes.Add(neighbourNode);
+                        }
+                    }
+                }
+            }
+        }
+
+        //out of nodes on the openlist, didn't find a solution
+
+        
+
+        return null;
+    }
+
+    private List<RoadNode> GetNeighbourList(RoadNode currentNode)
+    {
+        List<RoadNode> neighbours = new();
+        GameObject[] roadOptions = {
+                        currentNode.roadAbove, currentNode.roadBelow, currentNode.roadLeft, currentNode.roadRight
+                    };
+        foreach (GameObject roadOption in roadOptions)
+        {
+            if (roadOption != null)
+            {
+                RoadNode node;
+                navigationMap.TryGetValue(roadOption.name, out node);
+                neighbours.Add(node);
+            }
+        }
+
+        return neighbours;
+    }
+
+    private int CalculateDistanceCost(RoadNode a, RoadNode b)
+    {
+        float dist = 0;
+        dist += Mathf.Abs(a.road.transform.position.x - b.road.transform.position.x);
+        dist += Mathf.Abs(a.road.transform.position.y - b.road.transform.position.y);
+        dist += Mathf.Abs(a.road.transform.position.z - b.road.transform.position.z);
+        dist = 100 * dist; //to up the distance, otherwise rather small values
+        return Mathf.RoundToInt(dist);
+    }
+
+    private RoadNode GetLowestFCostNode(List<RoadNode> nodes)
+    {
+        RoadNode lowestFCostNode = nodes[0];
+        for (int i = 1; i < nodes.Count; i++)
+        {
+            if (nodes[i].fCost < lowestFCostNode.fCost)
+            {
+                lowestFCostNode = nodes[i];
+            }
+        }
+        return lowestFCostNode;
+    }
+
+    private List<RoadNode> CalculatePath(RoadNode endNode)
+    {
+        List<RoadNode> path = new();
+        path.Add(endNode);
+        RoadNode currentNode = endNode;
+        while (currentNode.cameFromNode != null)
+        {
+            path.Add(currentNode.cameFromNode);
+            currentNode = currentNode.cameFromNode;
+        }
+        path.Reverse();
+        return path;
+    }
+
      
 
-    public NavSolution solveNav(GameObject startRoad, GameObject endRoad)
+    /*public NavSolution solveNav(GameObject startRoad, GameObject endRoad)
     {
         int ROAD_USE_LIMIT = 1; //A car can only visit the same road piece twice
 
@@ -216,5 +358,5 @@ public class NavSolver: MonoBehaviour
 
 
         }
-    }
+    }*/
 }
