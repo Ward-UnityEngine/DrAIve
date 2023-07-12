@@ -134,7 +134,7 @@ public class NavSolver: MonoBehaviour
 
     public NavSolution solveNav(GameObject startRoad, GameObject endRoad)
     {
-        int ROAD_USE_LIMIT = 2; //A car can only visit the same road piece twice
+        int ROAD_USE_LIMIT = 1; //A car can only visit the same road piece twice
 
         List<NavSolution> solutions = new List<NavSolution>();
         NavSolution startSolution = new NavSolution();
@@ -148,7 +148,7 @@ public class NavSolver: MonoBehaviour
         while (true)
         {
             iterations++;
-            if (iterations > 100000)
+            if (iterations > 10000)
             {
                 Debug.Log("Reached max iterations");
                 return null;
@@ -190,7 +190,7 @@ public class NavSolver: MonoBehaviour
                                 newSolution.roads = roadsClone;
                                 newSolution.pathLength = possibleSolution.pathLength + nodeForLength.roadLength;
                                 solutions.Add(newSolution);
-                                if (road.name == lastRoad.name)
+                                if (road.name == endRoad.name)
                                 {
                                     //found the solution !
                                     return newSolution;
