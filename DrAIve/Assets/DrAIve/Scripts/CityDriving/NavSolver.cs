@@ -17,6 +17,7 @@ public class RoadNode
     //if it has a road above, it has to be accessible. So if one way road goes to two way road. The one way road will have 
     // the two way road as roadBelow but the two way road won't have to one way road as road Below.
     public GameObject road;
+    public Vector3 navPosition = Vector3.zero;
     public GameObject roadAbove;
     public GameObject roadBelow;
     public GameObject roadLeft;
@@ -28,6 +29,7 @@ public class RoadNode
     public RoadNode(GameObject road)
     {
         this.road = road;
+        this.navPosition = road.transform.Find("Nav").position;
     }
 
     public int CaculateFCost()
@@ -238,9 +240,9 @@ public class NavSolver: MonoBehaviour
     private int CalculateDistanceCost(RoadNode a, RoadNode b)
     {
         float dist = 0;
-        dist += Mathf.Abs(a.road.transform.position.x - b.road.transform.position.x);
-        dist += Mathf.Abs(a.road.transform.position.y - b.road.transform.position.y);
-        dist += Mathf.Abs(a.road.transform.position.z - b.road.transform.position.z);
+        dist += Mathf.Abs(a.navPosition.x - b.navPosition.x);
+        dist += Mathf.Abs(a.navPosition.y - b.navPosition.y);
+        dist += Mathf.Abs(a.navPosition.z - b.navPosition.z);
         dist = 100 * dist; //to up the distance, otherwise rather small values
         return Mathf.RoundToInt(dist);
     }

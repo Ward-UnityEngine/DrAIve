@@ -6,7 +6,7 @@ using UnityEngine;
 public class NavTesting : MonoBehaviour
 {
     public GameObject roadParent;
-    private GameObject[] spawnPositions;
+    private GameObject[] roadObjects;
     public GameObject GreenSphere;
     public GameObject BlueSphere;
     public GameObject PurpleSphere;
@@ -18,11 +18,11 @@ public class NavTesting : MonoBehaviour
     {
         //set spawn positions from parent and raytargets
         int index = 0;
-        spawnPositions = new GameObject[roadParent.transform.childCount];
+        roadObjects = new GameObject[roadParent.transform.childCount];
 
         foreach (Transform childSpawn in roadParent.transform)
         {
-            spawnPositions[index] = childSpawn.transform.gameObject;
+            roadObjects[index] = childSpawn.transform.gameObject;
             index++;
         }
     }
@@ -30,23 +30,24 @@ public class NavTesting : MonoBehaviour
 
 
     private void spawnAndFind() {
-        int randomIndex = Random.Range(0, spawnPositions.Length - 1);
-        GameObject startRoad = spawnPositions[randomIndex];
+        int randomIndex = Random.Range(0, roadObjects.Length - 1);
+        GameObject startRoad = roadObjects[randomIndex];
         int newIndex = randomIndex;
         while (newIndex == randomIndex)
         {
-            newIndex = Random.Range(0, spawnPositions.Length - 1);
+            newIndex = Random.Range(0, roadObjects.Length - 1);
         }
-        GameObject endRoad = spawnPositions[newIndex];
+        GameObject endRoad = roadObjects[newIndex];
+        Debug.Log("Finding for indexes: " + randomIndex + ", " + newIndex);
         spawnAndFindIndex(randomIndex, newIndex);
     }
 
     private void spawnAndFindIndex(int randomIndex, int newIndex)
     {
-        GameObject startRoad = spawnPositions[randomIndex];
-        GameObject endRoad = spawnPositions[newIndex];
-        s1 = Instantiate(GreenSphere, startRoad.transform.position, startRoad.transform.rotation);
-        s2 = Instantiate(BlueSphere, endRoad.transform.position, startRoad.transform.rotation);
+        GameObject startRoad = roadObjects[randomIndex];
+        GameObject endRoad = roadObjects[newIndex];
+        s1 = Instantiate(GreenSphere, startRoad.transform.Find("Nav").transform);
+        s2 = Instantiate(BlueSphere, endRoad.transform.Find("Nav").transform);
         roads = new();
         NavSolver navSolver = GameObject.Find("Navigator").GetComponent<NavSolver>();
         if (navSolver != null)
@@ -61,7 +62,7 @@ public class NavTesting : MonoBehaviour
             foreach (RoadNode roadNode in solution)
             {
                 GameObject roadPiece = roadNode.road;
-                roads.Add(Instantiate(PurpleSphere, roadPiece.transform.position, roadPiece.transform.rotation));
+                roads.Add(Instantiate(PurpleSphere, roadNode.navPosition, Quaternion.identity));
             }
         }
         else
@@ -91,7 +92,7 @@ public class NavTesting : MonoBehaviour
             {
                 Destroy(roadPiece);
             }
-            spawnAndFindIndex(30,35);
+            spawnAndFindIndex(22,12);
         }
     }
 }
