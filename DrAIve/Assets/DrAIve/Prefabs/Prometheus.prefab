@@ -1406,9 +1406,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 837428844963161396}
+  - {fileID: 3107013875971322137}
   - {fileID: 1863197712326783258}
-  - {fileID: 4973200488033975822}
+  - {fileID: 8125665178504438356}
   - {fileID: 5468591585064724685}
   m_Father: {fileID: 2258804612326342442}
   m_RootOrder: 2
@@ -1424,8 +1424,9 @@ GameObject:
   - component: {fileID: 2258804612326342442}
   - component: {fileID: 3050476869295355913}
   - component: {fileID: 5258925266437043092}
-  - component: {fileID: 9182147554067352670}
-  - component: {fileID: 1891654769275786848}
+  - component: {fileID: 3889551769127761245}
+  - component: {fileID: 7739599475667454453}
+  - component: {fileID: 7844331210713307575}
   m_Layer: 0
   m_Name: Prometheus
   m_TagString: Player
@@ -1440,7 +1441,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9017675441316059949}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -22.31, y: -4.4930305, z: 15.45}
   m_LocalScale: {x: 0.57, y: 0.57, z: 0.57}
   m_ConstrainProportionsScale: 1
@@ -1509,9 +1510,9 @@ MonoBehaviour:
   rearRightMesh: {fileID: 6497360051870018022}
   rearRightCollider: {fileID: 6213717858177832780}
   useEffects: 1
-  RLWParticleSystem: {fileID: 837428844978259376}
+  RLWParticleSystem: {fileID: 3107013875951948189}
   RRWParticleSystem: {fileID: 1863197712311603614}
-  RLWTireSkid: {fileID: 4973200488033975823}
+  RLWTireSkid: {fileID: 8125665178504438357}
   RRWTireSkid: {fileID: 5468591585064724684}
   useUI: 0
   carSpeedText: {fileID: 0}
@@ -1527,7 +1528,7 @@ MonoBehaviour:
   carSpeed: 0
   isDrifting: 0
   isTractionLocked: 0
---- !u!114 &9182147554067352670
+--- !u!114 &3889551769127761245
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1536,28 +1537,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 9017675441316059949}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d1c4e0b1822b495aa52bc52839ecb30, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b17fd7fbb627eb4e9bc8a439596b659, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BrainParameters:
-    VectorObservationSize: 31
-    NumStackedVectorObservations: 1
-    m_ActionSpec:
-      m_NumContinuousActions: 0
-      BranchSizes: 01000000
-    VectorActionSize: 01000000
-    VectorActionDescriptions: []
-    VectorActionSpaceType: 0
-    hasUpgradedBrainParametersWithActionSpec: 1
-  m_Model: {fileID: 0}
-  m_InferenceDevice: 0
-  m_BehaviorType: 0
-  m_BehaviorName: My Behavior
-  TeamId: 0
-  m_UseChildSensors: 1
-  m_UseChildActuators: 1
-  m_ObservableAttributeHandling: 0
---- !u!114 &1891654769275786848
+--- !u!114 &7739599475667454453
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1566,15 +1549,25 @@ MonoBehaviour:
   m_GameObject: {fileID: 9017675441316059949}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27058cc48fa532047a817bc5a51d75dc, type: 3}
+  m_Script: {fileID: 11500000, guid: 5bbf4c96e4c137241b564f7123f4ddd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agentParameters:
-    maxStep: 0
-  hasUpgradedFromAgentParameters: 1
-  MaxStep: 0
-  spawnPositionsParent: {fileID: 0}
-  rayTargetParent: {fileID: 4388302016823821103}
+  GreenSphere: {fileID: 3520898591614395759, guid: 3a62c410eb27539459fdef7262968b13, type: 3}
+  BlueSphere: {fileID: 277754669660993123, guid: 9b658a9efa6659546b8ac533954b4c4c, type: 3}
+  PurpleSphere: {fileID: 9160876509802798239, guid: 101dc458c7a83bd46b6e705c421ce8b0, type: 3}
+--- !u!114 &7844331210713307575
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9017675441316059949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2ad3e5dc54e7924284571b0d165216d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roadParent: {fileID: 0}
 --- !u!1001 &1310366637416140284
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1644,14 +1637,14 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ddf4ea2625767fd4bb4153e7e4009ad5, type: 3}
---- !u!4 &837428844963161396 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4121091811543137509, guid: ddf4ea2625767fd4bb4153e7e4009ad5, type: 3}
-  m_PrefabInstance: {fileID: 1310366637416140284}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &837428844978259376 stripped
+--- !u!198 &3107013875951948189 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 4121091811527957601, guid: ddf4ea2625767fd4bb4153e7e4009ad5, type: 3}
+  m_PrefabInstance: {fileID: 1310366637416140284}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3107013875971322137 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4121091811543137509, guid: ddf4ea2625767fd4bb4153e7e4009ad5, type: 3}
   m_PrefabInstance: {fileID: 1310366637416140284}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1525054833853632933
@@ -1735,12 +1728,12 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab4ea67cd9337c341af0bd7182c60f92, type: 3}
---- !u!4 &4973200488033975822 stripped
+--- !u!4 &8125665178504438356 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7344874181333496817, guid: ab4ea67cd9337c341af0bd7182c60f92, type: 3}
   m_PrefabInstance: {fileID: 1525054833853632933}
   m_PrefabAsset: {fileID: 0}
---- !u!96 &4973200488033975823 stripped
+--- !u!96 &8125665178504438357 stripped
 TrailRenderer:
   m_CorrespondingSourceObject: {fileID: 7344874181333496816, guid: ab4ea67cd9337c341af0bd7182c60f92, type: 3}
   m_PrefabInstance: {fileID: 1525054833853632933}
