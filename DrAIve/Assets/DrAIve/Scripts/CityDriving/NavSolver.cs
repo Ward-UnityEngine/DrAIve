@@ -74,9 +74,9 @@ public class NavSolver: MonoBehaviour
                     }
                     if (direction.direction != DirectionOption.OneWayOnlyOut)
                     {
-                        float xDistance = road.transform.position.x - match.road.transform.position.x;
-                        float yDistance = road.transform.position.y - match.road.transform.position.y;
-                        if (MathF.Abs(xDistance) > Mathf.Abs(yDistance))
+                        float xDistance = navParentNodeTR.position.x - navNodeTR.position.x;
+                        float zDistance = navParentNodeTR.position.z - navNodeTR.position.z;
+                        if (MathF.Abs(xDistance) > Mathf.Abs(zDistance))
                         {
                             //in the x direction
                             if (xDistance > 0)
@@ -93,7 +93,7 @@ public class NavSolver: MonoBehaviour
                         else
                         {
                             //in the y direction
-                            if (yDistance > 0)
+                            if (zDistance > 0)
                             {
                                 //towards bottom
                                 roadNode.roadBelow = match.road;

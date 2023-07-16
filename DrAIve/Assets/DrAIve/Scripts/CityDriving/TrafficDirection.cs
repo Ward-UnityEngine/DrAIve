@@ -8,6 +8,8 @@ public enum DirectionOption
     OneWayOnlyIn = 1,
     OneWayOnlyOut = 2
 }
+
+
 public class TrafficDirection : MonoBehaviour
 {
     [SerializeField] public DirectionOption direction;

@@ -92,7 +92,7 @@ public class NavTesting : MonoBehaviour
             {
                 Destroy(roadPiece);
             }
-            spawnAndFindIndex(22,12);
+            spawnAndFindIndex(5,16);
         }
     }
 }
