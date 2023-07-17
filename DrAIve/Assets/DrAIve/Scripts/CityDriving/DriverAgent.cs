@@ -119,6 +119,7 @@ public class DriverAgent : Agent
         int speedOption = actions.DiscreteActions[0];
         int steeringOption = actions.DiscreteActions[1];
         int handBrakeOption = actions.DiscreteActions[2];
+        Debug.Log(speedOption.ToString() + steeringOption.ToString() + handBrakeOption.ToString());
         if (speedOption == 0)
         {
             prometeoCarController.accelerating = false;
@@ -150,6 +151,12 @@ public class DriverAgent : Agent
             prometeoCarController.goingLeft = false;
             prometeoCarController.goingRight = true;
         }
+
+        if (handBrakeOption == 0)
+        {
+            prometeoCarController.handbraking = false;
+        }
+        else { prometeoCarController.handbraking = true; }
     }
 
     public override void Heuristic(in ActionBuffers actionsOut)
@@ -184,6 +191,7 @@ public class DriverAgent : Agent
         {
             discreteActions[2] = 0;
         }
+        Debug.Log(actionsOut);
     }
 
 
