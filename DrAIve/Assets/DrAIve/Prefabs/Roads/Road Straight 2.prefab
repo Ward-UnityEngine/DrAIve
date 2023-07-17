@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9106638823171358952}
   - component: {fileID: 9031869670299430946}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Left
   m_TagString: DoNotEnterZone
   m_Icon: {fileID: 0}
@@ -66,7 +66,7 @@ GameObject:
   - component: {fileID: 9047070012751104784}
   - component: {fileID: 6425511725145901171}
   - component: {fileID: 2188904212082962294}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Road Straight 2
   m_TagString: Road
   m_Icon: {fileID: 0}
@@ -184,7 +184,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5217536829897112768}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Nav
   m_TagString: Nav
   m_Icon: {fileID: 0}
@@ -218,7 +218,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8438785491007098840}
   - component: {fileID: 8572945174285808958}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Riught
   m_TagString: DoNotEnterZone
   m_Icon: {fileID: 0}
@@ -271,7 +271,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5998737024133256145}
   - component: {fileID: 4917670256035139860}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject
   m_TagString: Nav
   m_Icon: {fileID: 0}
@@ -316,7 +316,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5421007773518620596}
   - component: {fileID: 3175645460036035837}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject (1)
   m_TagString: Nav
   m_Icon: {fileID: 0}
@@ -360,7 +360,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8473942943408313714}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: DoNotEnterZone
   m_TagString: DoNotEnterZone
   m_Icon: {fileID: 0}

@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5724277898737341616}
   - component: {fileID: 389738775115433381}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Zone
   m_TagString: DoNotEnterZone
   m_Icon: {fileID: 0}
@@ -66,7 +66,7 @@ GameObject:
   - component: {fileID: 5429049642724186692}
   - component: {fileID: 5282654540645206537}
   - component: {fileID: 5823703398801587186}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Road Join Road
   m_TagString: Road
   m_Icon: {fileID: 0}
@@ -185,7 +185,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8156752773334928782}
   - component: {fileID: 1780557226049157299}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject (1)
   m_TagString: Nav
   m_Icon: {fileID: 0}
@@ -230,7 +230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1483342492690191801}
   - component: {fileID: 1489905076735402008}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Zone (1)
   m_TagString: DoNotEnterZone
   m_Icon: {fileID: 0}
@@ -282,7 +282,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6134638433543935017}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: DoNotEnterZone
   m_TagString: DoNotEnterZone
   m_Icon: {fileID: 0}
@@ -317,7 +317,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3173940435627920598}
   - component: {fileID: 2104788790287215349}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject (3)
   m_TagString: Nav
   m_Icon: {fileID: 0}
@@ -361,7 +361,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1115556801228440734}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Nav
   m_TagString: Nav
   m_Icon: {fileID: 0}
@@ -396,7 +396,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1468311142066315331}
   - component: {fileID: 6291187451997051427}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Zone (3)
   m_TagString: DoNotEnterZone
   m_Icon: {fileID: 0}
@@ -449,7 +449,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7238924013009699316}
   - component: {fileID: 4262786794699643731}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject (2)
   m_TagString: Nav
   m_Icon: {fileID: 0}

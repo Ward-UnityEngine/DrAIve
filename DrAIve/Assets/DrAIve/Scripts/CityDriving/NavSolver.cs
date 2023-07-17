@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 
 
@@ -273,6 +272,12 @@ public class NavSolver: MonoBehaviour
         path.Reverse();
         return path;
     }
+
+    public Dictionary<string, RoadNode> getNavigationMap()
+    {
+        return navigationMap;
+    }
+
 
      
 

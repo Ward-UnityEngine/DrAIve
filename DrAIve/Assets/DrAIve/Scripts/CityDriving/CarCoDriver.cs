@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -67,4 +67,12 @@ public class CarCoDriver : MonoBehaviour
         }
         navRequester.requestNewPath(startRoad, endRoad);
     }
+
+    public Vector3 getRandomRoadPosition()
+    {
+        int randomIndex = Random.Range(0, roadObjects.Length - 1);
+        GameObject road = roadObjects[randomIndex];
+        return road.transform.position;
+    }
 }
+*/

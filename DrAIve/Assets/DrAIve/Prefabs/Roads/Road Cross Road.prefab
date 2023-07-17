@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5114750199145392867}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Nav
   m_TagString: Nav
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4365155192283842913}
   - component: {fileID: 375043171297976471}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject (1)
   m_TagString: Nav
   m_Icon: {fileID: 0}
@@ -80,7 +80,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 0
-  navTileDirection: 1
 --- !u!1 &4848188818241336287
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,7 +90,7 @@ GameObject:
   m_Component:
   - component: {fileID: 262170201407383746}
   - component: {fileID: 809202823607039494}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject (3)
   m_TagString: Nav
   m_Icon: {fileID: 0}
@@ -126,7 +125,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 0
-  navTileDirection: 2
 --- !u!1 &4902522809246643066
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,7 +138,7 @@ GameObject:
   - component: {fileID: 3401150579794251931}
   - component: {fileID: 4663923295361650084}
   - component: {fileID: 7899590124679850151}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Road Cross Road
   m_TagString: Road
   m_Icon: {fileID: 0}
@@ -259,7 +257,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6771385927239108094}
   - component: {fileID: 2624723531186235789}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject (2)
   m_TagString: Nav
   m_Icon: {fileID: 0}
@@ -294,7 +292,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 0
-  navTileDirection: 3
 --- !u!1 &5904311511321893709
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,7 +302,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4419126380578490605}
   - component: {fileID: 4644080407561068790}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Zone
   m_TagString: DoNotEnterZone
   m_Icon: {fileID: 0}
@@ -358,7 +355,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6678705028178351158}
   - component: {fileID: 2321148857494815921}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Zone (2)
   m_TagString: DoNotEnterZone
   m_Icon: {fileID: 0}
@@ -411,7 +408,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2467152006351700396}
   - component: {fileID: 4769942506479289046}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Zone (3)
   m_TagString: DoNotEnterZone
   m_Icon: {fileID: 0}
@@ -464,7 +461,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3065435925081147232}
   - component: {fileID: 7054713755959407160}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: Zone (1)
   m_TagString: DoNotEnterZone
   m_Icon: {fileID: 0}
@@ -517,7 +514,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3913071083675704627}
   - component: {fileID: 485075578782114495}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GameObject
   m_TagString: Nav
   m_Icon: {fileID: 0}
@@ -552,7 +549,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   direction: 0
-  navTileDirection: 0
 --- !u!1 &8041866763307607178
 GameObject:
   m_ObjectHideFlags: 0
@@ -562,7 +558,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3485158005362581270}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: DoNotEnterZone
   m_TagString: DoNotEnterZone
   m_Icon: {fileID: 0}

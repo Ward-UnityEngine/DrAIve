@@ -158,6 +158,17 @@ public class PrometeoCarController : MonoBehaviour
       WheelFrictionCurve RRwheelFriction;
       float RRWextremumSlip;
 
+
+    //ADDEDCODE
+    //Input handlers
+    public bool goingLeft =false;
+    public bool goingRight = false;
+    public bool accelerating = false;
+    public bool braking = false;
+    public bool handbraking = false;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
