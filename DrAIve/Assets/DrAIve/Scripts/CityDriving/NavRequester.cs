@@ -42,7 +42,7 @@ public class NavRequester : MonoBehaviour
         foreach (RoadNode roadNode in navigationMap.Values)
         {
             GameObject road = roadNode.road;
-            float simple_dist = HelperMethods.simpleDistance(road.transform.position, this.transform.position);
+            float simple_dist = HelperMethods.simpleDistance(road.transform.Find("Nav").transform.position, this.transform.position);
             if (simple_dist < min_distance_to_car)
             {
                 min_distance_to_car = simple_dist;

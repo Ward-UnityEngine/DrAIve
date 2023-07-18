@@ -1,0 +1,10 @@
+mlagents-learn --force 
+-> check if it works
+
+
+mlagents-learn
+-> start learning
+mlagents-learn --force  
+-> remove the previous model with the same name
+
+mlagents-learn .\results\ppo\configuration.yaml --resume

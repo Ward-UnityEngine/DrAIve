@@ -3251,6 +3251,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 9017675441316059949, guid: dea46b43a342cb541a7ebed7277bfde5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 991718583589133892}
+    - targetCorrespondingSourceObject: {fileID: 9017675441316059949, guid: dea46b43a342cb541a7ebed7277bfde5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 991718583589133897}
   m_SourcePrefab: {fileID: 100100000, guid: dea46b43a342cb541a7ebed7277bfde5, type: 3}
 --- !u!1 &991718583589133889 stripped
 GameObject:
@@ -3297,8 +3300,8 @@ MonoBehaviour:
     hasUpgradedBrainParametersWithActionSpec: 1
   m_Model: {fileID: 0}
   m_InferenceDevice: 1
-  m_BehaviorType: 1
-  m_BehaviorName: CityCarDriving
+  m_BehaviorType: 0
+  m_BehaviorName: OvalStreetDriver
   TeamId: 0
   m_UseChildSensors: 1
   m_UseChildActuators: 1
@@ -3332,6 +3335,20 @@ MonoBehaviour:
   rayMissColor: {r: 1, g: 1, b: 1, a: 1}
   m_StartVerticalOffset: 0
   m_EndVerticalOffset: 0
+--- !u!114 &991718583589133897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 991718583589133889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DecisionPeriod: 5
+  TakeActionsBetweenDecisions: 1
 --- !u!1001 &3459725200716316567
 PrefabInstance:
   m_ObjectHideFlags: 0

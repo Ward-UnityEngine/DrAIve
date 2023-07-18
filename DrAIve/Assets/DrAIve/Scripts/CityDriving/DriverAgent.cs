@@ -34,6 +34,9 @@ public class DriverAgent : Agent
     private Vector3 goalPosition;
     private const float MATCHING_DISTANCE = 7f;
 
+    private float lastCheckpointTime = 0f;
+    private const float lastCheckpointTreshold = 40f;
+
 
     private int doNotEnters = 0;
     void Start()
@@ -65,6 +68,7 @@ public class DriverAgent : Agent
         else {
             Debug.LogWarning("Car requested a next target but there is no next target anymore");
         }
+        lastCheckpointTime = Time.time;
     }
 
     private void requestNextGoal()
@@ -80,6 +84,7 @@ public class DriverAgent : Agent
         {
             //car fell down
             AddReward(-100f);
+            Debug.Log("Fell off");
             EndEpisode();
         }
 
@@ -89,15 +94,26 @@ public class DriverAgent : Agent
             {
                 //reached the end of the line -> Bowser: "At the end of the line, I'll make you mine"
                 AddReward(200f);
+                Debug.Log("Found goal");
                 requestNextGoal();
             }
             else
             {
                 //found match -> new toGoTo
                 AddReward(10f);
+                Debug.Log("Found match");
                 requestNextTarget();
             }
 
+        }
+
+        //check if we aren't stuck on some shit
+        if (Time.time - lastCheckpointTime > lastCheckpointTreshold)
+        {
+            //is stuck somewhere
+            AddReward(-10f);
+            EndEpisode();
+            Debug.Log("Reset because stuck");
         }
     }
 
@@ -119,7 +135,6 @@ public class DriverAgent : Agent
         int speedOption = actions.DiscreteActions[0];
         int steeringOption = actions.DiscreteActions[1];
         int handBrakeOption = actions.DiscreteActions[2];
-        Debug.Log(speedOption.ToString() + steeringOption.ToString() + handBrakeOption.ToString());
         if (speedOption == 0)
         {
             prometeoCarController.accelerating = false;
@@ -191,7 +206,6 @@ public class DriverAgent : Agent
         {
             discreteActions[2] = 0;
         }
-        Debug.Log(actionsOut);
     }
 
 

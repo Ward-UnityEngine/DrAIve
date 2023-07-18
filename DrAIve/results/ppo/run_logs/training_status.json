@@ -1,4 +1,35 @@
 {
+    "OvalStreetDriver": {
+        "checkpoints": [
+            {
+                "steps": 499949,
+                "file_path": "results\\ppo\\OvalStreetDriver\\OvalStreetDriver-499949.onnx",
+                "reward": 19.5,
+                "creation_time": 1689622869.3709116,
+                "auxillary_file_paths": [
+                    "results\\ppo\\OvalStreetDriver\\OvalStreetDriver-499949.pt"
+                ]
+            },
+            {
+                "steps": 500013,
+                "file_path": "results\\ppo\\OvalStreetDriver\\OvalStreetDriver-500013.onnx",
+                "reward": 19.5,
+                "creation_time": 1689622869.423936,
+                "auxillary_file_paths": [
+                    "results\\ppo\\OvalStreetDriver\\OvalStreetDriver-500013.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 500013,
+            "file_path": "results\\ppo\\OvalStreetDriver.onnx",
+            "reward": 19.5,
+            "creation_time": 1689622869.423936,
+            "auxillary_file_paths": [
+                "results\\ppo\\OvalStreetDriver\\OvalStreetDriver-500013.pt"
+            ]
+        }
+    },
     "metadata": {
         "stats_format_version": "0.3.0",
         "mlagents_version": "0.30.0",
